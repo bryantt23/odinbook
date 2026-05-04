@@ -1,11 +1,10 @@
 class PostsController < ApplicationController
   def show
-    puts "show"
     @post=Post.find(params[:id])
   end
 
   def index
-    @posts=Post.all
+    @posts=Post.includes(:user).all
   end
 
   def edit
