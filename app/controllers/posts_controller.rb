@@ -12,8 +12,12 @@ class PostsController < ApplicationController
 
   def destroy
     @post=Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
+    if @post.user_id==current_user.id
+      @post.destroy
+      redirect_to posts_path
+    else
+      render :show, status: :unprocessable_entity
+    end
   end
 
   def new
