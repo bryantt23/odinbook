@@ -1,16 +1,3 @@
 <h1>New post</h1>
 
-<%= form_with model: @post do |form| %>
-    <div>
-        <%= form.label :subject %>
-        <%= form.text_field :subject %>
-    </div>
-    <div>
-        <%= form.label :content %>
-        <%= form.text_field :content %>
-    </div>
-
-    <div>
-        <%= form.submit %>
-    </div>
-<% end %>
+<%= render "form", post: @post %>
