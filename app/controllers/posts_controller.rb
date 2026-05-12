@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   def show
     @post=Post.find(params[:id])
-    @comments=Comment.where(post_id: params[:id]).includes(:user).all
+    @comments=@post.comments.includes(:user)
   end
 
   def index
