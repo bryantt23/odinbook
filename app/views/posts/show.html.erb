@@ -4,6 +4,16 @@
 
 <p>Comments <%= @comments.to_a %> </p>
 
+<%= form_with model: [@post, @comment] do |form| %>
+    <div>
+        <%= form.label :content %>
+        <%= form.text_field :content %>
+    </div>
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>
+
 <p>Comments</p>
 <% if @comments.length==0 %>
     <p>There are no comments yet</p>

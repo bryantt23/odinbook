@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :posts
+  resources :posts do
+    resources :comments, only: [ :new, :create ]
+  end
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -15,10 +17,10 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   authenticated :user do
-    root to: 'posts#index', as: :authenticated_root
+    root to: "posts#index", as: :authenticated_root
   end
 
-  unauthenticated :user do 
-    root to: 'home#index', as: :unauthenticated_root
+  unauthenticated :user do
+    root to: "home#index", as: :unauthenticated_root
   end
 end
