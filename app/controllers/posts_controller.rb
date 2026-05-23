@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   def show
     @post=Post.find(params[:id])
+    @likes=Like.where(post_id: params[:id])
+    @post.likes=@likes
     @comments=@post.comments.includes(:user)
     @comment=Comment.new
   end
