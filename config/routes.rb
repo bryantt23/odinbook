@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :posts do
     resources :comments, only: [ :new, :create ]
+    resources :likes, only: [ :update ]
   end
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

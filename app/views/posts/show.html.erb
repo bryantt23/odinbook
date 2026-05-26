@@ -3,8 +3,6 @@
 <p><%= @post.content %></p>
 <p>Post Likes: <%= @post.likes.size %></p>
 
-<p>Comments <%= @comments.to_a %> </p>
-
 <%= form_with model: [@post, @comment] do |form| %>
     <div>
         <%= form.label :content, "Add Comment" %>
@@ -27,6 +25,11 @@
         <% end %>
     </ul>
 <% end %>
+
+<%= button_to (
+ @post.likes.any?{|like| like.user_id==current_user.id} ? "Unlike" : "Like"), 
+ post_like_path(@post), 
+ method: :put %>
 
 <%= link_to "Back", posts_path %>
 
