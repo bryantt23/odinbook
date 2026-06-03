@@ -6,7 +6,7 @@
 <ul>
     <% @user.posts.each do |post| %>
         <li>
-            <%= link_to "#{post.subject}", post_path(post.id) %>            
+            <%= link_to post.subject, post %>            
         </li>
     <% end %>
 </ul>
