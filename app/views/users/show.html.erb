@@ -1,0 +1,12 @@
+<h1>User info</h1>
+
+<p><%= "User id: #{@user.id}"%></p>
+<p><%= "User email: #{@user.email}"%></p>
+
+<ul>
+    <% @user.posts.each do |post| %>
+        <li>
+            <%= link_to "#{post.subject}", post_path(post.id) %>            
+        </li>
+    <% end %>
+</ul>
