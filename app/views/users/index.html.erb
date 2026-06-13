@@ -1,20 +1,9 @@
 <h1>Users</h1>
 
-
-
-current user id<%= current_user.id %>
-
 <ul>
     <% @users.each do |user| %>
         <li>
             <%= link_to "User #{user.id}", user_path(user.id) %>      
-            
-            <h2>
-                friendships
-                <%= user.id %>
-                <%= user.email %>
-                <%= user.friendships.to_a %>
-            </h2>             
             <% if user.id==current_user.id %> 
                 Me
             <% elsif current_user.friendships.any?{|friendship| friendship.friend_id==user.id} %>
