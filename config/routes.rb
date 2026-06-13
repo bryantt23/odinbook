@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :friendships, only: [ :create ]
   resources :posts do
     resources :comments, only: [ :new, :create ]
     resources :likes, only: [ :update ]
