@@ -10,3 +10,17 @@
         </li>
     <% end %>
 </ul>
+
+<h2>Following</h2>
+<ul>
+    <% @friendships.each do |friendship| %>
+        <li><%= friendship.friend.email %></li>
+    <% end %>
+</ul>
+
+<h2>Followed by</h2>
+<ul>
+    <% @inverse_friendships.each do |friendship| %>
+       <li><%= friendship.user.email %></li>
+    <% end %>
+</ul>
