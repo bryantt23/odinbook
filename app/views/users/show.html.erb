@@ -12,15 +12,24 @@
 </ul>
 
 <h2>Following</h2>
-<ul>
-    <% @friendships.each do |friendship| %>
-        <li><%= friendship.friend.email %></li>
-    <% end %>
-</ul>
+<% if @friendships.length==0 %>
+    Not following anyone yet
+<% else %>
+    <ul>
+        <% @friendships.each do |friendship| %>
+            <li><%= friendship.friend.email %></li>
+        <% end %>
+    </ul>
+<% end %>
 
 <h2>Followed by</h2>
-<ul>
-    <% @inverse_friendships.each do |friendship| %>
-       <li><%= friendship.user.email %></li>
-    <% end %>
-</ul>
+<% if @inverse_friendships.length==0 %>
+    No followers 
+<% else %>
+    <ul>
+        <% @inverse_friendships.each do |friendship| %>
+        <li><%= friendship.user.email %></li>
+        <% end %>
+    </ul>
+<% end %>
+
