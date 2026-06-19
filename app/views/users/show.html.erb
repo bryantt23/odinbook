@@ -17,7 +17,7 @@
 <% else %>
     <ul>
         <% @friendships.each do |friendship| %>
-            <li><%= friendship.friend.email %></li>
+            <li><%= link_to friendship.friend.email, user_path(friendship.friend.id) %></li>
         <% end %>
     </ul>
 <% end %>
@@ -28,7 +28,7 @@
 <% else %>
     <ul>
         <% @inverse_friendships.each do |friendship| %>
-        <li><%= friendship.user.email %></li>
+        <li><%= link_to friendship.user.email, user_path(friendship.user.id) %></li>
         <% end %>
     </ul>
 <% end %>
