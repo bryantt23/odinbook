@@ -8,6 +8,9 @@ class PostsController < ApplicationController
 
   def index
     @posts=Post.includes(:user).all
+    @user_posts=Post.where(user_id: current_user.id)
+    @following_ids=Friendship.where(user_id: current_user.id).pluck(:friend_id)
+    @following_posts=Post.where(user_id: @following_ids)
   end
 
   def edit
