@@ -7,10 +7,11 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts=Post.includes(:user).all
-    @user_posts=Post.where(user_id: current_user.id)
     @following_ids=Friendship.where(user_id: current_user.id).pluck(:friend_id)
-    @following_posts=Post.where(user_id: @following_ids)
+    @posts=Post.where(user_id: current_user.id)
+      .or(Post.where(user_id: @following_ids))
+      .includes(:user)
+      .order(created_at: :desc)
   end
 
   def edit
