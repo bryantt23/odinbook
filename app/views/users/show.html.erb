@@ -2,6 +2,7 @@
 
 <p><%= "User id: #{@user.id}"%></p>
 <p><%= "User email: #{@user.email}"%></p>
+<%= image_tag @user.gravatar_url %>
 
 <ul>
     <% @user.posts.each do |post| %>
