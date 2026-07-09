@@ -4,7 +4,10 @@ Rails.application.routes.draw do
     resources :comments, only: [ :new, :create ]
     resources :likes, only: [ :update ]
   end
-  devise_for :users
+  devise_for :users,
+    controllers: {
+      registrations: "users/registrations"
+    }
   resources :users, only: [ :index, :show ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -26,4 +29,6 @@ Rails.application.routes.draw do
   unauthenticated :user do
     root to: "home#index", as: :unauthenticated_root
   end
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
