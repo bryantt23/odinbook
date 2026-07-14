@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_06_10_073953) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_14_134820) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -29,6 +29,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_10_073953) do
     t.integer "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true
   end
 
   create_table "likes", force: :cascade do |t|
@@ -37,6 +38,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_10_073953) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["user_id", "post_id"], name: "index_likes_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
