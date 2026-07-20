@@ -23,6 +23,24 @@
   </head>
 
   <body>
+    <header class="main-header">
+      <nav class="nav-container">        
+        <ul class="nav-links">
+          <% if user_signed_in? %>
+            <li><%= link_to "Home", authenticated_root_path %></li>
+            <li><%= link_to "Users", users_path %></li>
+            <li><%= link_to "Posts", posts_path %></li> 
+          <% else %>
+            <li><%= link_to "Home", unauthenticated_root_path %></li>
+            <li><%= link_to "Sign In", user_session_path %></li>
+            <li><%= link_to "Sign up", new_user_registration_path %></li> 
+          
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+
+
     <% if notice.present? %>
        <p class="notice"><%= notice %></p>
     <% end %>

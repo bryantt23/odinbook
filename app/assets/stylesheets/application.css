@@ -88,3 +88,10 @@ button:hover {
   background: #fee2e2;
   color: #991b1b;
 }
+
+.nav-links{
+  display:flex;
+  list-style-type: none;
+  gap: 5px;
+  padding: 0;
+}
